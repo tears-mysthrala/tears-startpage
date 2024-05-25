@@ -42,7 +42,7 @@ const default_config = {
           },
           {
             name: "twitter",
-            url: "https://twitter.com/home",
+            url: "https://x.com/home",
             icon: "brand-twitter-filled",
             icon_color: "#7daea3",
           },
