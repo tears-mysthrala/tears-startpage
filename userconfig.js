@@ -298,7 +298,7 @@ const default_config = {
               icon_color: "#7daea3",
             },
             {
-              name: "fotos",
+              name: "photos",
               url: "https://photos.google.com/u/1",
               icon: "photo-filled",
               icon_color: "#ea6962",
