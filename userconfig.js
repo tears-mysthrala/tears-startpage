@@ -101,6 +101,11 @@ const default_config = {
             url: "https://www.primevideo.com/region/eu/?ref_=dv_web_unknown",
             icon: "brand-amazon",
             icon_color: "#7daea3",
+          }, {
+            name: "netflix",
+            url: "https://www.netflix.com/",
+            icon: "brand-netflix",
+            icon_color: "#7daea3",
           },
         ],
       }],
