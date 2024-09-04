@@ -319,6 +319,12 @@ const default_config = {
               url: "https://www.linkedin.com/feed/",
               icon: "brand-linkedin",
               icon_color: "#7daea3",
+            }, 
+            {
+              name: "remote desktop",
+              url: "https://remotedesktop.google.com",
+              icon: "ti-device-remote",
+              icon_color: "#7daea3",
             },
           ],
         },
