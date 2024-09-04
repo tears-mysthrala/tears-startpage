@@ -323,7 +323,7 @@ const default_config = {
             {
               name: "remote desktop",
               url: "https://remotedesktop.google.com",
-              icon: "ti-device-remote",
+              icon: "device-desktop",
               icon_color: "#7daea3",
             },
           ],
