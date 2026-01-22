@@ -22,10 +22,11 @@ const default_config = {
   keybindings: {
     "s": "search-bar",
     "q": "config-tab",
+    "m": "https://mkdl.jp",
   },
   disabled: [],
   localIcons: false,
-  fastlink: "https://chat.openai.com/",
+  fastlink: "https://gemini.google.com/",
   openLastVisitedTab: true,
   tabs: [
     {
@@ -91,102 +92,74 @@ const default_config = {
         name: "Video",
         links: [
           {
-            name: "disney+",
-            url: "https://www.disneyplus.com/home",
-            icon: "brand-disney",
-            icon_color: "#7daea3",
+            name: "yt music",
+            url: "https://music.youtube.com/",
+            icon: "brand-youtube",
+            icon_color: "#ea6962",
           },
           {
-            name: "primevideo",
-            url: "https://www.primevideo.com/region/eu/?ref_=dv_web_unknown",
-            icon: "brand-amazon",
-            icon_color: "#7daea3",
-          }, 
+            name: "audible",
+            url: "https://www.audible.com/",
+            icon: "headphones",
+            icon_color: "#e78a4e",
+          },
           {
-            name: "netflix",
-            url: "https://www.netflix.com/",
-            icon: "brand-netflix",
+            name: "nhk news",
+            url: "https://www3.nhk.or.jp/nhkworld/",
+            icon: "news",
             icon_color: "#7daea3",
           },
         ],
       }],
     },
     {
-      name: "design",
-      background_url: "src/img/banners/cbg-6.gif",
+      name: "IA",
+      background_url: "src/img/banners/cbg-10.gif",
       categories: [
         {
-          name: "inspiration",
+          name: "Plataformas IA",
           links: [
             {
-              name: "pinterest",
-              url: "https://www.pinterest.es/",
-              icon: "brand-pinterest",
-              icon_color: "#ea6962",
-            },
-            {
-              name: "artstation",
-              url: "https://www.artstation.com/?sort_by=community",
-              icon: "chart-area",
-              icon_color: "#7daea3",
-            },
-            {
-              name: "leonardo ai",
-              url: "https://app.leonardo.ai/",
-              icon: "brand-openai",
+              name: "gemini",
+              url: "https://gemini.google.com/",
+              icon: "sparkles",
               icon_color: "#89b482",
             },
             {
-              name: "dribble",
-              url: "https://dribbble.com/following",
-              icon: "brand-dribbble-filled",
-              icon_color: "#d3869b",
+              name: "chatgpt",
+              url: "https://chat.openai.com/",
+              icon: "brand-openai",
+              icon_color: "#7daea3",
             },
-          ],
-        },
-        {
-          name: "resources",
-          links: [
             {
-              name: "figma",
-              url: "https://www.figma.com",
-              icon: "brand-figma",
+              name: "mistral",
+              url: "https://chat.mistral.ai/",
+              icon: "wind",
               icon_color: "#d3869b",
             },
             {
-              name: "uxpro",
-              url: "https://uxpro.cc/",
-              icon: "components",
+              name: "grok",
+              url: "https://grok.x.ai/",
+              icon: "brand-x",
               icon_color: "#a9b665",
             },
             {
-              name: "colorhunt",
-              url: "https://colorhunt.co/",
-              icon: "color-picker",
+              name: "deepseek",
+              url: "https://chat.deepseek.com/",
+              icon: "brain",
+              icon_color: "#e78a4e",
+            },
+            {
+              name: "opencode",
+              url: "https://opencode.ai/",
+              icon: "terminal-2",
               icon_color: "#ea6962",
             },
             {
-              name: "adobe color",
-              url: "https://color.adobe.com/es/create/color-wheel",
-              icon: "brand-adobe",
-              icon_color: "#7daea3",
-            },
-            {
-              name: "terminalsexy",
-              url: "https://terminal.sexy",
-              icon: "prompt",
-              icon_color: "#e78a4e",
-            },
-          ],
-        },
-        {
-          name: "resources 3d",
-          links: [
-            {
-              name: "thingiverse",
-              url: "https://www.thingiverse.com/",
-              icon: "circle-letter-t",
-              icon_color: "#7daea3",
+              name: "elyza",
+              url: "https://elyza.ai/",
+              icon: "letter-e",
+              icon_color: "#d4be98",
             },
           ],
         },
@@ -217,16 +190,10 @@ const default_config = {
           name: "resources",
           links: [
             {
-              name: "phind",
-              url: "https://www.phind.com/",
-              icon: "brand-openai",
+              name: "kotlin",
+              url: "https://kotlinlang.org/docs/home.html",
+              icon: "brand-kotlin",
               icon_color: "#89b482",
-            },
-            {
-              name: "flutter",
-              url: "https://docs.flutter.dev/ui",
-              icon: "brand-flutter",
-              icon_color: "#7daea3",
             },
             {
               name: "hacktricks",
@@ -286,6 +253,12 @@ const default_config = {
               icon: "brand-gmail",
               icon_color: "#ea6962",
             },
+            {
+              name: "protonmail",
+              url: "https://mail.proton.me/",
+              icon: "mail",
+              icon_color: "#d3869b",
+            },
           ],
         },
         {
@@ -298,16 +271,10 @@ const default_config = {
               icon_color: "#e78a4e",
             },
             {
-              name: "dropbox",
-              url: "https://www.dropbox.com/h?role=personal&di=left_nav",
-              icon: "box-seam",
+              name: "proton drive",
+              url: "https://proton.me/drive",
+              icon: "cloud-lock",
               icon_color: "#7daea3",
-            },
-            {
-              name: "photos",
-              url: "https://photos.google.com/u/1",
-              icon: "photo-filled",
-              icon_color: "#ea6962",
             },
           ],
         },
@@ -330,6 +297,75 @@ const default_config = {
         },
       ],
     },
+    {
+      name: "cyber",
+      background_url: "src/img/banners/cbg-8.gif",
+      categories: [
+        {
+          name: "Recursos Clave",
+          links: [
+            {
+              name: "SANS (ICS)",
+              url: "https://www.sans.org/industrial-control-systems-security/",
+              icon: "certificate",
+              icon_color: "#e78a4e",
+            },
+            {
+              name: "IEC 62443",
+              url: "https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards",
+              icon: "book",
+              icon_color: "#ea6962",
+            },
+            {
+              name: "MITRE ATT&CK®",
+              url: "https://attack.mitre.org/matrices/ics/",
+              icon: "sitemap",
+              icon_color: "#a9b665",
+            },
+            {
+              name: "Dragos",
+              url: "https://www.dragos.com/resources/",
+              icon: "submarine",
+              icon_color: "#7daea3",
+            },
+          ],
+        }, {
+          name: "Organismos Regionales",
+          links: [
+            {
+              name: "ZIUR (Gipuzkoa)",
+              url: "https://www.ziur.eus/",
+              icon: "building-community",
+              icon_color: "#7daea3",
+            },
+            {
+              name: "CYBASQUE",
+              url: "https://cybasque.eus/",
+              icon: "users-group",
+              icon_color: "#e78a4e",
+            },
+            {
+              name: "METI (Japón)",
+              url: "https://www.meti.go.jp/english/policy/safety_security/cybersecurity/index.html",
+              icon: "building-bank",
+              icon_color: "#ea6962",
+            },
+            {
+              name: "ICSCoE (Japón)",
+              url: "https://www.ipa.go.jp/en/about/org/icscoe/index.html",
+              icon: "school",
+              icon_color: "#d3869b",
+            },
+            {
+              name: "JPCERT/CC",
+              url: "https://www.jpcert.or.jp/english/",
+              icon: "emergency-bed",
+              icon_color: "#a9b665",
+            },
+          ],
+        }
+      ],
+    },
   ],
 };
 
@@ -338,9 +374,11 @@ const CONFIG = new Config(saved_config ?? default_config);
 
 (function() {
   var css = document.createElement('link');
-  css.href = 'src/css/tabler-icons.min.css';
+  // Use CDN for the latest icons, fallback to local if specified.
+  css.href = CONFIG.config.localIcons
+    ? 'src/css/tabler-icons.min.css'
+    : 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css';
   css.rel = 'stylesheet';
   css.type = 'text/css';
-  if (!CONFIG.config.localIcons)
-    document.getElementsByTagName('head')[0].appendChild(css);
+  document.getElementsByTagName('head')[0].appendChild(css);
 })();

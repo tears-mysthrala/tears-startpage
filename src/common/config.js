@@ -97,8 +97,14 @@ class Config {
     document.onkeypress = ({ key }) => {
       if (document.activeElement !== document.body) return;
 
-      if (Object.keys(this.config.keybindings).includes(key))
-        Actions.activate(this.config.keybindings[key]);
+      if (Object.keys(this.config.keybindings).includes(key)) {
+        const action = this.config.keybindings[key];
+        if (action.startsWith('http')) {
+          window.open(action, '_blank');
+        } else {
+          Actions.activate(action);
+        }
+      }
     };
   }
 
