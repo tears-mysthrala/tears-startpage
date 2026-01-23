@@ -44,7 +44,7 @@ const default_config = {
           {
             name: "twitter",
             url: "https://x.com/home",
-            icon: "brand-twitter-filled",
+            icon: "brand-twitter",
             icon_color: "#7daea3",
           },
           {
@@ -56,7 +56,7 @@ const default_config = {
           {
             name: "youtube",
             url: "https://www.youtube.com/",
-            icon: "brand-youtube-filled",
+            icon: "brand-youtube",
             icon_color: "#ea6962",
           },
           {
@@ -72,7 +72,7 @@ const default_config = {
           {
             name: "chess",
             url: "https://www.chess.com/home",
-            icon: "chess-queen-filled",
+            icon: "chess-queen",
             icon_color: "#a9b665",
           },
           {
