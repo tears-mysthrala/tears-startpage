@@ -44,7 +44,11 @@ class Clock extends Component {
   }
 
   setTime() {
-    const date = new Date();
+    let date = new Date();
+
+    if (this.timezone) {
+      date = new Date(date.toLocaleString('en-US', { timeZone: this.timezone }));
+    }
 
     this.refs.clock = date.strftime(CONFIG.clock.format);
   }
@@ -55,6 +59,11 @@ class Clock extends Component {
       this.setIconColor();
 
       setInterval(() => this.setTime(), 1000);
+
+      document.addEventListener('weather-location-changed', (e) => {
+        this.timezone = e.detail.timezone;
+        this.setTime();
+      });
     });
   }
 }

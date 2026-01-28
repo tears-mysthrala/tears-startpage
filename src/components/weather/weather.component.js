@@ -2,7 +2,8 @@ class Weather extends Component {
   refs = {
     temperature: '.weather-temperature-value',
     condition: '.weather-condition-icon',
-    scale: '.weather-temperature-scale'
+    scale: '.weather-temperature-scale',
+    locationName: '.weather-temperature-location'
   };
 
   forecasts = [
@@ -38,11 +39,12 @@ class Weather extends Component {
   }
 
   setEvents() {
-    this.onclick = this.swapScale;
+    this.onclick = this.toggleLocation;
   }
 
   setDependencies() {
-    this.location = CONFIG.temperature.location;
+    this.defaultLocation = CONFIG.temperature.location;
+    this.location = this.defaultLocation;
     this.temperatureScale = CONFIG.temperature.scale;
     this.weatherForecast = new WeatherForecastClient(this.location);
   }
@@ -96,11 +98,11 @@ class Weather extends Component {
           line-height: 0;
       }
 
-      .weather-condition-icon.sunny {
+      .weather-condition-icon.warm {
           color: #e78a4e;
       }
 
-      .weather-condition-icon.cloudy {
+      .weather-condition-icon.cold {
           color: #7daea3;
       }
     `;
@@ -119,6 +121,27 @@ class Weather extends Component {
   toC(f) { return Math.round((f - 32) * 5 / 9); }
 
   toF(c) { return Math.round(c * 9 / 5 + 32); }
+
+  async toggleLocation() {
+    let timezone;
+    if (this.location === 'Hakodate, JP') {
+      this.location = this.defaultLocation;
+      timezone = 'Europe/Madrid';
+    } else {
+      this.location = 'Hakodate, JP';
+      timezone = 'Asia/Tokyo';
+    }
+
+    this.weatherForecast = new WeatherForecastClient(this.location);
+    await this.setWeather();
+
+    document.dispatchEvent(new CustomEvent('weather-location-changed', {
+      detail: {
+        location: this.location,
+        timezone: timezone
+      }
+    }));
+  }
 
   swapScale() {
     this.temperatureScale = this.temperatureScale === 'C' ? 'F' : 'C';
@@ -145,12 +168,20 @@ class Weather extends Component {
 
   setTemperature() {
     const { temperature, condition } = this.weather;
-    const { icon, color } = this.getForecast(condition);
+    const { icon } = this.getForecast(condition);
 
     this.refs.temperature = this.convertScale(temperature);
     this.refs.condition = icon;
     this.refs.scale = this.temperatureScale;
-    this.refs.condition.classList.add(color);
+    this.refs.locationName = `${this.location} - ${condition}`;
+    
+    this.refs.condition.classList.remove('warm', 'cold', 'sunny', 'cloudy');
+    
+    if (this.location === 'Hakodate, JP') {
+        this.refs.condition.classList.add('cold');
+    } else {
+        this.refs.condition.classList.add('warm');
+    }
   }
 
   getForecast(condition) {
