@@ -1,71 +1,94 @@
 <div align="center">
-    <img src="/img/README-decorator.png" width=300/><br/>
-    <a href="https://github.com/AllJavi/tartarus-startpage/stargazers">
-        <img src="https://img.shields.io/github/stars/AllJavi/tartarus-startpage?color=a9b665&style=for-the-badge&logo=starship">
-    </a>
-    <a href="https://github.com/AllJavi/tartarus-startpage/issues">
-        <img src="https://img.shields.io/github/issues/AllJavi/tartarus-startpage?color=ea6962&style=for-the-badge&logo=codecov">
-    </a>
-    <a href="https://github.com/AllJavi/tartarus-startpage/network/members">
-        <img src="https://img.shields.io/github/forks/AllJavi/tartarus-startpage?color=7daea3&style=for-the-badge&logo=jfrog-bintray">
-    </a>
-    <a href="https://github.com/AllJavi/tartarus-startpage/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-orange.svg?color=d4be98&style=for-the-badge&logo=archlinux">
-    </a>
+    <img src="/img/README-decorator.png" width=300/>
 </div>
 
-## 💻 Preview
+# tears-startpage
 
-https://github.com/AllJavi/tartarus-startpage/assets/49349604/9a2a3f4c-33ef-4eb3-9243-cc160a56a181
+Personal browser startpage. A static, single-page launcher with tabs, link
+categories, a clock, weather and a search dialog — no build step, no backend.
 
-This start page is based on the [dawn](https://github.com/b-coimbra/dawn) repository, which has even more functionality. I've tweaked the page's style a bit to match my [dotfiles](https://github.com/AllJavi/tartarus-dotfiles), and I've added some features to make it more comfortable.
+This is a fork of [tartarus-startpage](https://github.com/AllJavi/tartarus-startpage)
+by [AllJavi](https://github.com/AllJavi), which in turn is based on
+[dawn](https://github.com/b-coimbra/dawn) by [b-coimbra](https://github.com/b-coimbra).
+Both upstream projects are MIT-licensed; see [License](#license).
 
-## ⌨️ Keybindings
-| Hotkey                                            | Action                      |
-| ------------------------------------------------- | --------------------------- |
-| <kbd>Numrow</kbd> \| <kbd>MouseWheel</kbd> \| <kbd>Click</kbd> | Switch tabs            |
-| <kbd>s</kbd>                           | Search Dialog            |
-| <kbd>q</kbd>                           | Config Dialog (new)           |
-| <kbd>Esc</kbd>                           | Close Dialogs            |
+## Features
 
-## ⚙️ Configuration Dialog
-![config-dialog](https://github.com/AllJavi/tartarus-startpage/assets/49349604/3b42c650-b5bb-4a7d-a358-cfa5a8915966)
+- Tabbed layout with link categories, switchable via number row, mouse wheel or click.
+- Clock and weather widgets (location configurable).
+- Search dialog with multiple engines, selected with `!<id>` prefixes.
+- Configuration dialog to override the default config at runtime (stored in
+  `localStorage`).
+- Optional locally-installed icon font for faster loads.
 
-The default configuration file is [userconfig.js](userconfig.js), but you can change it in the configuration dialog. You can find more information about how the file works in the [original repository](https://github.com/b-coimbra/dawn). The available components are tabs, a clock, and weather.
+## Usage
 
-Additionally, there are two different new options:
-- `fastlink`: To set the link of the Pokeball button.
-- `localIcons`: To optimize the loading time of the icons, you can check it out [here](#local-icons).
+The page is fully static. Serve the repository root with any static file
+server and open it as your browser's home/new-tab page:
 
-## 🔍 Search Dialog
-![search-dialog](https://github.com/AllJavi/tartarus-startpage/assets/49349604/3f76323d-88c4-41b6-b93d-e4cceb1780b7)
+```bash
+# any of these works
+python -m http.server 8080
+npx serve .
+```
 
-The search dialog allows you to display a search bar with various search engines defined in the configuration. To select each one, you simply need to prefix the query with the corresponding `!<id>`.
-By default, the defined search engines are:
-- `!g`: google
-- `!d`: duckduckgo
-- `!y`: youtube
-- `!r`: reddit
-- `!p`: pinterest
+Then point your browser (or a new-tab extension) at `http://localhost:8080`.
+Opening `index.html` directly from disk also works in most browsers, but a
+local server is recommended.
 
-## 🖼 Available banners
-|cbg-2|cbg-3|cbg-4|cbg-5|
-| ------------- | ------------- | ------------- | ------------- | 
-|<img src="src/img/banners/cbg-2.gif" width=175>|<img src="src/img/banners/cbg-3.gif" width=175>|<img src="src/img/banners/cbg-4.gif" width=175>|<img src="src/img/banners/cbg-5.gif" width=175>|
+## Configuration
 
-|cbg-6|cbg-7|cbg-8|cbg-9|
-| ------------- | ------------- | ------------- | ------------- |
-|<img src="src/img/banners/cbg-6.gif" width=175>|<img src="src/img/banners/cbg-7.gif" width=175>|<img src="src/img/banners/cbg-8.gif" width=175>|<img src="src/img/banners/cbg-9.gif" width=175>|
+The default configuration lives in [`userconfig.js`](userconfig.js). You can
+edit it directly, or override it at runtime through the config dialog
+(<kbd>q</kbd>), which persists to `localStorage`.
 
-|cbg-10|cbg-11|cbg-12|cbg-13|
-| ------------- | ------------- | ------------- | ------------- |
-|<img src="src/img/banners/cbg-10.gif" width=175>|<img src="src/img/banners/cbg-11.gif" width=175>|<img src="src/img/banners/cbg-12.gif" width=175>|<img src="src/img/banners/cbg-13.gif" width=175>|
+Notable options:
 
-## Local Icons
-If you want to reduce the loading time of the icons, you could install the [icon font](https://github.com/AllJavi/tartarus-startpage/tree/master/src/fonts) locally and activate the option `"localIcons": true` in the config to disable the remote styles.
+- `temperature.location` / `temperature.scale`: weather location and unit.
+- `search.engines`: map of `!<id>` prefixes to search engine URLs.
+- `keybindings`: hotkey-to-action (or URL) map.
+- `fastlink`: target of the quick-link button.
+- `localIcons`: set to `true` to use the bundled icon font
+  (`src/fonts`) instead of the CDN stylesheet.
+- `tabs`: the tab/category/link tree shown on the page.
+
+> **Note on the committed `userconfig.js`:** the file in this repo is the
+> author's personal configuration. It was reviewed before publication and
+> contains only links to public websites and services — no internal or
+> sensitive URLs — so it is kept in the repo as a working example. If you fork
+> this project, replace it with your own links (and consider gitignoring it if
+> yours contains anything private).
+
+Default search prefixes: `!g` Google, `!d` DuckDuckGo, `!y` YouTube,
+`!r` Reddit, `!p` Pinterest.
+
+## Keybindings
+
+| Hotkey | Action |
+| ------ | ------ |
+| <kbd>Numrow</kbd> \| <kbd>MouseWheel</kbd> \| <kbd>Click</kbd> | Switch tabs |
+| <kbd>s</kbd> | Search dialog |
+| <kbd>q</kbd> | Config dialog |
+| <kbd>m</kbd> | Custom URL shortcut (see `keybindings` in `userconfig.js`) |
+| <kbd>Esc</kbd> | Close dialogs |
+
+## Local icons
+
+To reduce icon loading time, install the bundled icon font
+([`src/fonts`](src/fonts)) locally and set `"localIcons": true` in the config
+to disable the remote stylesheet.
+
+## Banners
+
+Background banners live in [`src/img/banners`](src/img/banners) and are
+referenced per tab via `background_url` in the config.
 
 ## Credit
-- [Dawn Startpage](https://github.com/b-coimbra/dawn) ([preview](https://startpage.metaphoric.dev/))
+
+- [tartarus-startpage](https://github.com/AllJavi/tartarus-startpage) by AllJavi (MIT)
+- [dawn](https://github.com/b-coimbra/dawn) by b-coimbra (MIT) — [preview](https://startpage.metaphoric.dev/)
 
 ## License
-[MIT License](./LICENSE)
+
+[MIT License](./LICENSE). The original upstream copyright notice is retained
+as required by the MIT license; fork modifications are under the same terms.
